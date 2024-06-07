@@ -1,6 +1,22 @@
 {
+  "name": "JustSugar",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "bump": "npx bumpp"
-  }
+    "test": "swift test",
+    "bump": "np --no-cleanup --no-publish"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "np": "^10.0.5"
+  },
+  "funding": "https://github.com/sponsors/mesqueeb",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mesqueeb/JustSugar.git"
+  },
+  "homepage": "https://github.com/mesqueeb/JustSugar#readme",
+  "bugs": "https://github.com/mesqueeb/JustSugar/issues"
 }

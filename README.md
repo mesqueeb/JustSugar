@@ -9,3 +9,6 @@
 
 JS-inspired Syntax Sugar on top of Swift to make working with Arrays/Strings/... easier
 
+## Documentation
+
+See the [documentation](https://swiftpackageindex.com/mesqueeb/justsugar/v0.0.3/documentation/justsugar/swift) for more info.

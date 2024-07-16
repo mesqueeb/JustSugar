@@ -11,4 +11,4 @@ JS-inspired Syntax Sugar on top of Swift to make working with Arrays/Strings/...
 
 ## Documentation
 
-See the [documentation](https://swiftpackageindex.com/mesqueeb/justsugar/v0.1.0/documentation/justsugar/swift) for more info.
+See the [documentation](https://swiftpackageindex.com/mesqueeb/justsugar/documentation/justsugar/swift) for more info.

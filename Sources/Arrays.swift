@@ -4,21 +4,21 @@ public extension Array {
   /// JS's `.at()`
   ///
   /// There's no good viable replacement in Swift. Use this for convenience.
+  ///
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/subscript(_:)-25iat](https://developer.apple.com/documentation/swift/array/subscript(_:)-25iat)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/at](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/at)
   @inlinable func at(_ index: Int) -> Element? {
-    // Check for negative indices
-    let effectiveIndex = index >= 0 ? index : count + index
-
+    // Convert negative to positive index
+    let i = index >= 0 ? index : count + index
     // Return nil if index is out of range
-    guard effectiveIndex >= 0, effectiveIndex < count else {
-      return nil
-    }
-
-    return self[effectiveIndex]
+    guard i >= 0, i < count else { return nil }
+    return self[i]
   }
 
   /// JS's `.concat`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/+(_:_:)-6h58k](https://https://developer.apple.com/documentation/swift/array/+(_:_:)-6h58k)
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/+(_:_:)-6h58k](https://developer.apple.com/documentation/swift/array/+(_:_:)-6h58k)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)
   @available(*, deprecated, message: "Use native Swift's `arr1 + arr2` instead")
   @inlinable func concat(_ array: [Element]) -> [Element] {
     return self + array
@@ -26,7 +26,8 @@ public extension Array {
 
   /// JS's `.entries`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/enumerated()](https://developer.apple.com/documentation/swift/array/enumerated())
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/enumerated()](https://developer.apple.com/documentation/swift/array/enumerated())
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/entries)
   @available(*, deprecated, message: "Use native Swift's `.enumerated()` instead")
   @inlinable func entries() -> EnumeratedSequence<[Element]> {
     return self.enumerated()
@@ -34,13 +35,18 @@ public extension Array {
 
   /// JS's `.every`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/allSatisfy(_:)](https://developer.apple.com/documentation/swift/array/allSatisfy(_:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/allSatisfy(_:)](https://developer.apple.com/documentation/swift/array/allSatisfy(_:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every)
   @available(*, deprecated, message: "Use native Swift's `.allSatisfy { $0 == ... }` instead")
   @inlinable func every(_ predicate: (Element) throws -> Bool) rethrows -> Bool {
     return try self.allSatisfy(predicate)
   }
 
   /// JS's `.fill`
+  ///
+  /// There's no good viable replacement in Swift. Use this for convenience.
+  ///
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)
   @inlinable mutating func fill(_ element: Element) -> [Element] {
     var i = 0
     while i < self.count {
@@ -52,7 +58,8 @@ public extension Array {
 
   /// JS's `.find`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/first(where:)](https://developer.apple.com/documentation/swift/array/first(where:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/first(where:)](https://developer.apple.com/documentation/swift/array/first(where:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find)
   @available(*, deprecated, message: "Use native Swift's `.first { $0 == ... }` instead")
   @inlinable func find(_ predicate: (Element) throws -> Bool) rethrows -> Element? {
     return try self.first(where: predicate)
@@ -60,7 +67,8 @@ public extension Array {
 
   /// JS's `.findIndex`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/firstindex(where:)](https://developer.apple.com/documentation/swift/array/firstindex(where:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/firstindex(where:)](https://developer.apple.com/documentation/swift/array/firstindex(where:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
   @available(*, deprecated, message: "Use native Swift's `.firstIndex { $0 == ... }` instead")
   @inlinable func findIndex(_ predicate: (Element) throws -> Bool) rethrows -> Int {
     return try self.firstIndex(where: predicate) ?? -1
@@ -68,7 +76,8 @@ public extension Array {
 
   /// JS's `.findLast`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/last(where:)](https://developer.apple.com/documentation/swift/array/last(where:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/last(where:)](https://developer.apple.com/documentation/swift/array/last(where:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/findLast)
   @available(*, deprecated, message: "Use native Swift's `.last { $0 == ... }` instead")
   @inlinable func findLast(_ predicate: (Element) throws -> Bool) rethrows -> Element? {
     return try self.last(where: predicate)
@@ -76,15 +85,17 @@ public extension Array {
 
   /// JS's `.length`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/count](https://developer.apple.com/documentation/swift/array/count)
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/count](https://developer.apple.com/documentation/swift/array/count)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/length)
   @available(*, deprecated, message: "Use native Swift's `.count` instead")
-  var length: Int {
+  @inlinable var length: Int {
     return self.count
   }
 
   /// JS's `.pop`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/poplast()](https://developer.apple.com/documentation/swift/array/poplast())
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/poplast()](https://developer.apple.com/documentation/swift/array/poplast())
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
   @available(*, deprecated, message: "Use native Swift's `.popLast()` instead")
   @inlinable mutating func pop() -> Element? {
     return self.popLast()
@@ -92,7 +103,8 @@ public extension Array {
 
   /// JS's `.push`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/append(_:)-1ytnt](https://developer.apple.com/documentation/swift/array/append(_:)-1ytnt)
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/append(_:)-1ytnt](https://developer.apple.com/documentation/swift/array/append(_:)-1ytnt)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
   @available(*, deprecated, message: "Use native Swift's `.append(...)` instead")
   @inlinable mutating func push(_ element: Element) -> Int {
     self.append(element)
@@ -101,7 +113,8 @@ public extension Array {
 
   /// JS's `.shift`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/removefirst()](https://developer.apple.com/documentation/swift/array/removefirst())
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/removefirst()](https://developer.apple.com/documentation/swift/array/removefirst())
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/shift)
   @available(*, deprecated, message: "Use native Swift's `.removeFirst()` instead")
   @inlinable mutating func shift() -> Element? {
     if self.isEmpty { return nil }
@@ -110,25 +123,25 @@ public extension Array {
 
   /// JS's `.slice`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/subscript(_:)-53fvb](https://developer.apple.com/documentation/swift/array/subscript(_:)-53fvb)
-  ///
   /// There's no good viable replacement in Swift. Use this for convenience.
+  ///
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/subscript(_:)-53fvb](https://developer.apple.com/documentation/swift/array/subscript(_:)-53fvb)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)
   @inlinable func slice(_ start: Int, _ end: Int? = nil) -> [Element] {
+    // Convert negative to positive index
     let startIndex = start >= 0 ? start : count + start
     let endIndex = end ?? count
+    // Convert negative to positive index
     let adjustedEndIndex = endIndex >= 0 ? endIndex : count + endIndex
-
-    guard startIndex < adjustedEndIndex, startIndex >= 0, adjustedEndIndex <= count else {
-      return []
-    }
-
+    // Return [] if index is out of range
+    guard startIndex < adjustedEndIndex, startIndex >= 0, adjustedEndIndex <= count else { return [] }
     return Array(self[startIndex ..< adjustedEndIndex])
   }
 
   /// JS's `.some`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/contains(where:)](https://developer.apple.com/documentation/swift/array/contains(where:))
-  ///
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/contains(where:)](https://developer.apple.com/documentation/swift/array/contains(where:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some)
   @available(*, deprecated, message: "Use native Swift's `.contains { $0 == ... }` instead")
   @inlinable func some(_ predicate: (Element) throws -> Bool) rethrows -> Bool {
     return try self.contains(where: predicate)
@@ -136,7 +149,8 @@ public extension Array {
 
   /// JS's `.splice`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai](https://developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai)
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai](https://developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
   @available(*, deprecated, message: "Use native Swift's `.replaceSubrange(0..<3, with: [1, 2, 3])` instead")
   @inlinable mutating func splice(_ start: Int, _ deleteCount: Int? = nil, _ elements: Element...) -> [Element] {
     let end = if let deleteCount { start + deleteCount } else { count }
@@ -147,7 +161,8 @@ public extension Array {
 
   /// JS's `.toSpliced`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai](https://developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai)
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai](https://developer.apple.com/documentation/swift/array/replacesubrange(_:with:)-6a2ai)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSpliced)
   @available(*, deprecated, message: "Use native Swift's `.replaceSubrange(0..<3, with: [1, 2, 3])` instead")
   @inlinable func toSpliced(_ start: Int, _ deleteCount: Int? = nil, _ elements: Element...) -> [Element] {
     var newArr = self
@@ -159,7 +174,8 @@ public extension Array {
 
   /// JS's `.toReversed`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/reverse()](https://developer.apple.com/documentation/swift/array/reverse())
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/reverse()](https://developer.apple.com/documentation/swift/array/reverse())
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toReversed)
   @available(*, deprecated, message: "Use native Swift's `.reversed()` instead")
   @inlinable func toReversed() -> [Element] {
     return self.reversed()
@@ -167,7 +183,8 @@ public extension Array {
 
   /// JS's `.toSorted`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/sorted(by:)](https://developer.apple.com/documentation/swift/array/sorted(by:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/sorted(by:)](https://developer.apple.com/documentation/swift/array/sorted(by:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)
   @available(*, deprecated, message: "Use native Swift's `.sorted(by: { $0 > $1 })` instead")
   @inlinable func toSorted(_ predicate: (Element, Element) throws -> Bool) rethrows -> [Element] {
     return try self.sorted(by: predicate)
@@ -175,14 +192,17 @@ public extension Array {
 
   /// JS's `.unshift`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/insert(_:at:)-3erb3](https://developer.apple.com/documentation/swift/array/insert(_:at:)-3erb3)
-  @available(*, deprecated, message: "Use native Swift's `.unshift(...)` instead")
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/insert(_:at:)-3erb3](https://developer.apple.com/documentation/swift/array/insert(_:at:)-3erb3)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/unshift)
+  @available(*, deprecated, message: "Use native Swift's `.insert(..., at: 0)` instead")
   @inlinable mutating func unshift(_ element: Element) -> Int {
     self.insert(element, at: 0)
     return self.count
   }
 
   /// Use to be able to casually destructure arrays like you can with JS
+  ///
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/destructure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/destructure)
   @inlinable func destructure() -> (Element?, Element?) {
     guard count >= 2 else {
       return (nil, nil)
@@ -194,7 +214,8 @@ public extension Array {
 public extension Array where Element: Comparable {
   /// JS's `.toSorted`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/sorted()](https://developer.apple.com/documentation/swift/array/sorted())
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/sorted()](https://developer.apple.com/documentation/swift/array/sorted())
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/toSorted)
   @available(*, deprecated, message: "Use native Swift's `.sorted()` instead")
   @inlinable func toSorted() -> [Element] {
     return self.sorted()
@@ -204,7 +225,8 @@ public extension Array where Element: Comparable {
 public extension Array where Element: Equatable {
   /// JS's `.includes`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/contains(_:)](https://developer.apple.com/documentation/swift/array/contains(_:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/contains(_:)](https://developer.apple.com/documentation/swift/array/contains(_:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes)
   @available(*, deprecated, message: "Use native Swift's `.contains(...)` instead")
   @inlinable func includes(_ element: Element) -> Bool {
     return self.contains(element)
@@ -212,7 +234,8 @@ public extension Array where Element: Equatable {
 
   /// JS's `.indexOf`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/firstindex(of:)](https://developer.apple.com/documentation/swift/array/firstindex(of:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/firstindex(of:)](https://developer.apple.com/documentation/swift/array/firstindex(of:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf)
   @available(*, deprecated, message: "Use native Swift's `.firstIndex(of: ...)` instead")
   @inlinable func indexOf(_ element: Element) -> Int {
     return self.firstIndex(of: element) ?? -1
@@ -220,7 +243,8 @@ public extension Array where Element: Equatable {
 
   /// JS's `.lastIndexOf`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/lastindex(of:)](https://developer.apple.com/documentation/swift/array/lastindex(of:))
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/lastindex(of:)](https://developer.apple.com/documentation/swift/array/lastindex(of:))
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/lastIndexOf)
   @available(*, deprecated, message: "Use native Swift's `.lastIndex(of: ...)` instead")
   @inlinable func lastIndexOf(_ element: Element) -> Int {
     return self.lastIndex(of: element) ?? -1
@@ -230,9 +254,10 @@ public extension Array where Element: Equatable {
 public extension Array where Element == String {
   /// JS's `.join()`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/joined(separator:)-5do1g](https://developer.apple.com/documentation/swift/array/joined(separator:)-5do1g)
-  ///
   /// Shorthand for native Swift's `joined(separator: "...")`
+  ///
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/joined(separator:)-5do1g](https://developer.apple.com/documentation/swift/array/joined(separator:)-5do1g)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
   @inlinable func join(_ separator: String) -> String {
     return joined(separator: separator)
   }
@@ -241,9 +266,10 @@ public extension Array where Element == String {
 public extension Array where Element == Int {
   /// JS's `.join()`
   ///
-  /// - SeeAlso: [developer.apple.com/documentation/swift/array/joined(separator:)-5do1g](https://developer.apple.com/documentation/swift/array/joined(separator:)-5do1g)
-  ///
   /// Shorthand for native Swift's `joined(separator: "...")`
+  ///
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/array/joined(separator:)-5do1g](https://developer.apple.com/documentation/swift/array/joined(separator:)-5do1g)
+  /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join)
   @inlinable func join(_ separator: String) -> String {
     let newArr = self.map { String($0) }
     return newArr.joined(separator: separator)

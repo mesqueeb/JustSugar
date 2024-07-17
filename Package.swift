@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
   name: "JustSugar",
+  platforms: [.macOS(.v13), .iOS(.v16)],
   products: [
     .library(
       name: "JustSugar",
@@ -13,11 +14,18 @@ let package = Package(
   targets: [
     .target(
       name: "JustSugar",
-      swiftSettings: [.enableExperimentalFeature("StrictConcurrency")]
+      swiftSettings: [
+        .enableExperimentalFeature("StrictConcurrency"),
+        .enableUpcomingFeature("BareSlashRegexLiterals"),
+      ]
     ),
     .testTarget(
       name: "JustSugarTests",
-      dependencies: ["JustSugar"]
+      dependencies: ["JustSugar"],
+      swiftSettings: [
+        .enableExperimentalFeature("StrictConcurrency"),
+        .enableUpcomingFeature("BareSlashRegexLiterals"),
+      ]
     ),
   ]
 )

@@ -1,5 +1,4 @@
 import Foundation
-import RegexBuilder
 
 public extension String {
   /// Allows access like `str[1 ..< 3]`

@@ -90,7 +90,7 @@ public extension String {
   /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/string/init(repeating:count:)-23xjt](https://developer.apple.com/documentation/swift/string/init(repeating:count:)-23xjt)
   /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padEnd)
   @inlinable func padEnd(_ count: Int, _ characters: String) -> String {
-    let paddingCount = self.count - self.count
+    let paddingCount = count - self.count
     guard paddingCount > 0 else { return self }
     let repeatedString = String(repeating: characters, count: (paddingCount + characters.count - 1) / characters.count)
     return self + repeatedString.prefix(paddingCount)
@@ -103,7 +103,7 @@ public extension String {
   /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/string/init(repeating:count:)-23xjt](https://developer.apple.com/documentation/swift/string/init(repeating:count:)-23xjt)
   /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart)
   @inlinable func padStart(_ count: Int, _ characters: String) -> String {
-    let paddingCount = self.count - self.count
+    let paddingCount = count - self.count
     guard paddingCount > 0 else { return self }
     let repeatedString = String(repeating: characters, count: (paddingCount + characters.count - 1) / characters.count)
     return repeatedString.prefix(paddingCount) + self

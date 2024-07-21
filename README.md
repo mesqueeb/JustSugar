@@ -14,15 +14,15 @@ JS-inspired Syntax Sugar on top of Swift to do two things:
 
 **Example of the .slice method**
 
-<img width="300" alt="example of the slice method" src="docs/public/eg-shorthands.png" />
+<img width="500" alt="example of the slice method" src="docs/public/eg-shorthands.png" />
 
 **Example of JS methods with deprecation warning prompting to use the Swift equivalent**
 
-<img width="300" alt="example of JS methods with deprecation warning" src="docs/public/eg-deprecations.png" />
+<img width="800" alt="example of JS methods with deprecation warning" src="docs/public/eg-deprecations.png" />
 
 ## Full Documentation
 
-See the [documentation](https://swiftpackageindex.com/mesqueeb/justsugar/documentation/justsugar/swift) for more info.
+See the SPM [JustSugar documentation](https://swiftpackageindex.com/mesqueeb/justsugar/documentation/justsugar/swift) for more info.
 
 ## TypeScript VS Swift Cheatsheet
 

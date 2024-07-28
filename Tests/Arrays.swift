@@ -37,6 +37,15 @@ struct ArrayTests {
     arr = [1, 2, 3, 4]
     #expect(arr.fill(0) == [0, 0, 0, 0])
     
+    arr = [1, 2, 3, 4]
+    #expect(arr.fill(0, 2, 4) == [1, 2, 0, 0])
+
+    arr = [1, 2, 3, 4]
+    #expect(arr.fill(5, 1) == [1, 5, 5, 5])
+
+    arr = [1, 2, 3, 4]
+    #expect(arr.fill(6) == [6, 6, 6, 6])
+    
     var emptyArr: [Int?] = []
     #expect(emptyArr.fill(nil) == [])
   }

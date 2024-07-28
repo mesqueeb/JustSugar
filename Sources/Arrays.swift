@@ -44,15 +44,12 @@ public extension Array {
 
   /// JS's `.fill`
   ///
-  /// There's no good viable replacement in Swift. Use this for convenience.
-  ///
+  /// - SeeAlso: Swift Docs: [developer.apple.com/documentation/swift/rangereplaceablecollection/replacesubrange(_:with:)-6x76a](https://developer.apple.com/documentation/swift/rangereplaceablecollection/replacesubrange(_:with:)-6x76a)
   /// - SeeAlso: JS Docs: [developer.apple.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/fill)
-  @inlinable mutating func fill(_ element: Element) -> [Element] {
-    var i = 0
-    while i < self.count {
-      self[i] = element
-      i += 1
-    }
+  @available(*, deprecated, message: "Use native Swift's `.replaceSubrange(startIndex ..< endIndex, with: repeatElement(element, count: endIndex - startIndex))`")
+  @inlinable mutating func fill(_ value: Element, _ startIndex: Int = 0, _ endIndex: Int? = nil) -> [Element] {
+    let endIndex = endIndex ?? self.count
+    self.replaceSubrange(startIndex ..< endIndex, with: repeatElement(value, count: endIndex - startIndex))
     return self
   }
 

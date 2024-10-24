@@ -174,7 +174,6 @@ extension Array {
   ) -> [Element] {
     var newArr = self
     let end = if let deleteCount { start + deleteCount } else { count }
-    let removedElements = newArr.slice(start, end)
     newArr.replaceSubrange(start ..< end, with: elements)
     return newArr
   }

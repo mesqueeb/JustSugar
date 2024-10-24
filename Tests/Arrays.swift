@@ -160,6 +160,20 @@ struct ArrayTests {
     #expect(array == [1, 2, 3, 4, 5])
     #expect(array.toSpliced(2, 2, 0, -1) == [1, 2, 0, -1, 5])
     #expect(array == [1, 2, 3, 4, 5])
+
+    // tests from MDN:
+    let months = ["Jan", "Mar", "Apr", "May"]
+    // Inserting an element at index 1
+    let months2 = months.toSpliced(1, 0, "Feb")
+    #expect(months2 == ["Jan", "Feb", "Mar", "Apr", "May"])
+    // Deleting two elements starting from index 2
+    let months3 = months2.toSpliced(2, 2)
+    #expect(months3 == ["Jan", "Feb", "May"])
+    // Replacing one element at index 1 with two new elements
+    let months4 = months3.toSpliced(1, 1, "Feb", "Mar")
+    #expect(months4 == ["Jan", "Feb", "Mar", "May"])
+    // Original array is not modified
+    #expect(months == ["Jan", "Mar", "Apr", "May"])
   }
 
   @Test func toReversed() throws {

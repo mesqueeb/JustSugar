@@ -5,12 +5,7 @@ import PackageDescription
 let package = Package(
   name: "JustSugar",
   platforms: [.macOS(.v13), .iOS(.v16)],
-  products: [
-    .library(
-      name: "JustSugar",
-      targets: ["JustSugar"]
-    ),
-  ],
+  products: [.library(name: "JustSugar", targets: ["JustSugar"])],
   targets: [
     .target(
       name: "JustSugar",

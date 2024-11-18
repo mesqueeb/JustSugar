@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://mesqueeb.github.io/SwiftVsTypeScript/justSugar">
+    <img alt="logo" src="https://mesqueeb.github.io/SwiftVsTypeScript/logo.png" width="160" style="" />
+  </a>
+</p>
+
 # JustSugar 🍰
 
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fmesqueeb%2FJustSugar%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/mesqueeb/JustSugar)

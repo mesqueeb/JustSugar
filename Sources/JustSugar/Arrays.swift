@@ -124,11 +124,12 @@ extension Array {
     let endIndex = end ?? count
     // Convert negative to positive index
     let adjustedEndIndex = endIndex >= 0 ? endIndex : count + endIndex
-    // Return [] if index is out of range
-    guard startIndex < adjustedEndIndex, startIndex >= 0, adjustedEndIndex <= count else {
-      return []
-    }
-    return Array(self[startIndex ..< adjustedEndIndex])
+    // Clamp indices to valid range (JavaScript behavior)
+    let clampedStart = Swift.max(0, Swift.min(startIndex, count))
+    let clampedEnd = Swift.max(0, Swift.min(adjustedEndIndex, count))
+    // Return [] if start >= end
+    guard clampedStart < clampedEnd else { return [] }
+    return Array(self[clampedStart ..< clampedEnd])
   }
 
   /// JS's `.some`

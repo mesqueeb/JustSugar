@@ -124,7 +124,9 @@ struct ArrayTests {
     #expect(array.slice(0, 5) == [1, 2, 3, 4, 5])
     #expect(array.slice(3, 1) == [])
     #expect(array.slice(5, 7) == [])
-    #expect(array.slice(-6, -4) == [])
+    #expect(array.slice(-6, -4) == [1])
+    #expect(array.slice(-1) == [5])
+    #expect(array.slice(-10) == array)
     let emptyArr: [String] = []
     #expect(emptyArr.slice(1, 3) == [])
   }
